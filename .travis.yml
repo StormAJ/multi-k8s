@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t arwedstorm/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run arwedstorm/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t arwedstorm/multi-client ./client
+  - docker build -t arwedstorm/multi-nginx ./nginx
+  - docker build -t arwedstorm/multi-server ./server
+  - docker build -t arwedstorm/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  - docker push arwedstorm/multi-client
+  - docker push arwedstorm/multi-nginx
+  - docker push arwedstorm/multi-server
+  - docker push arwedstorm/multi-worker
