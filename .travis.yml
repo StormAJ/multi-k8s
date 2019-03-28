@@ -20,6 +20,7 @@ after_success:
   - docker push arwedstorm/multi-client
   - docker push arwedstorm/multi-nginx
   - docker push arwedstorm/multi-server
+  - docker push arwedstorm/multi-worker
 
 deploy:
   provider: elasticbeanstalk
