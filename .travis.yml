@@ -20,4 +20,16 @@ after_success:
   - docker push arwedstorm/multi-client
   - docker push arwedstorm/multi-nginx
   - docker push arwedstorm/multi-server
-  - docker push arwedstorm/multi-worker
+
+deploy:
+  provider: elasticbeanstock
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-401106560890
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
