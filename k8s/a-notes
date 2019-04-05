@@ -5,3 +5,13 @@ kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgresPW
 minikube start --vm-driver
 minikube addons enable ingress
 minikube dashboard 
+
+Google Cloud Shell:
+gcloud config set project multi-k8s-236712    // google-cloud project id
+gcloud config set compute/zone europe-west3-c // google-cloud project zone (Ort)
+gcloud container clusters get-credentials multi-cluster
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgresPW
+
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
