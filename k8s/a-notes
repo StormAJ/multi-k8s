@@ -1,0 +1,7 @@
+kubectl apply -f k8s
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=postgresPW
+
+minikube start --vm-driver
+minikube addons enable ingress
+minikube dashboard 
