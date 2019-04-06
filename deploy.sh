@@ -1,6 +1,6 @@
-docker build -t arwedstorm/multi-client:latest -t arwedstorm/multi-client:$SHAW -f ./client/Dockerfile ./client
-docker build -t arwedstorm/multi-server:latest -t arwedstorm/multi-server:$SHAW -f ./server/Dockerfile ./server
-docker build -t arwedstorm/multi-worker:latest -t arwedstorm/multi-worker:$SHAW -f ./worker/Dockerfile ./worker
+docker build -t arwedstorm/multi-client:latest -t arwedstorm/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t arwedstorm/multi-server:latest -t arwedstorm/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t arwedstorm/multi-worker:latest -t arwedstorm/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push arwedstorm/multi-client:latest
 docker push arwedstorm/multi-server:latest
