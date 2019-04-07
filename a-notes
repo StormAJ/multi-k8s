@@ -25,6 +25,14 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 helm init --service-account tiller --upgrade
 helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
 
+run travis in docker container in VM:
+docker run -it -v ${pwd}:/app ruby:2.3 sh // runs docker container (volume app mapped to local directory (pwd))
+#gem install travis  // installs travis in container on VM
+#travis login    // travis = github entry data
+   // copy service-account-json to complex-k8s folder
+#travis encrypt-file service-account.json -r arwedstorm/multi-k8s  // creates secrets in travis (project multi-k8s) and generates a decryption cmd line
+
+
 travis encrypt-file service-account.json -r StormAJ/multi-k8s
 openssl aes-256-cbc -K $encrypted_0c35eebf403c_key -iv $encrypted_0c35eebf403c_iv -in service-account.json.enc -out service-account.json -d
 
