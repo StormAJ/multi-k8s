@@ -35,8 +35,8 @@ class Fib extends Component {
   };
 
   renderSeenIndexes() {
-    return "placeholer for seen Indexes";
-    //return this.state.seenIndexes.map(({ number }) => number).join(", ");
+    //return "placeholer for seen Indexes";
+    return this.state.seenIndexes.map(({ number }) => number).join(", ");
   }
 
   renderValues() {
